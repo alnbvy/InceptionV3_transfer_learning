@@ -1,4 +1,4 @@
-# Image segmentation of the Pet dataset using Unet
+# Image classification using transfer learning
 
 ## Table of Contents
 * [General Info](#general-information)
@@ -9,21 +9,18 @@
 
 
 ## General Information
-- The goal of the project is to develop a model to perform semantic image segmentation on the pet images
-- I am using a Unet neural network architecture which consists of an encoder and decoder section. This architecture is also a fully convolutional network:
+- The goal of the project is to develop a model to perform binary image classification using CNN
+- Firstly, I am using a simple CNN model
 
-![Unet](Unet.png)
-![Encoder](Encoder.png)
-![Decoder](Decoder.png)
+![CNN](model_CNN.png)
 
-- The dataset is Oxford Pets - IIT dataset [BBC News Classification](https://www.robots.ox.ac.uk/~vgg/data/pets/). This dataset contains pet images, their classes, segmentation masks and head region-of-interest. I will only use the images and segmentation masks in this project. This dataset is already included in TensorFlow Datasets and we can simply download it. The segmentation masks are included in versions 3 and above.
-- The model achieves an accuracy of 85% on the validation set after 15 epochs.
-- I ran the notebook on Arizona State University's supercomputing cluster using two Tesla V100 GPUs. The information regarding the GPUs is included at the end of the notebook.
+- The dataset is [horse vs human](https://www.tensorflow.org/datasets/catalog/horses_or_humans).
+- As you can see in the results, the preprocessing techniques used in augmenting the data did not help much in the results. The validation accuracy is fluctuating and not trending up like the training accuracy. This might be because the additional training data generated still do not represent the features in the validation data.
+- Therefore, improvement is made by using transfer learning using Inception V3 model. This model achives an accuracy of 99.9% on the first epoch. 
 
 ## Results
 
-![Example screenshot](Result1.png)
-![Example screenshot](Result2.png)
+![Result](Result.png)
 <!-- If you have screenshots you'd like to share, include them here. -->
 
 ## Technologies Used
